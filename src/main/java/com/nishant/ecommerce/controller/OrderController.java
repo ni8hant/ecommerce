@@ -14,7 +14,9 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.nishant.ecommerce.dto.OrderProductDto;
@@ -26,17 +28,19 @@ import com.nishant.ecommerce.service.OrderService;
 import com.nishant.ecommerce.service.ProductOrderService;
 import com.nishant.ecommerce.service.ProductService;
 
+@RestController
+@RequestMapping("/api/orders")
 public class OrderController {
 
 	ProductService productService;
 	OrderService orderService;
-	ProductOrderService orderProductService;
+	ProductOrderService productOrderService;
 
 	public OrderController(ProductService productService, OrderService orderService,
-			ProductOrderService orderProductService) {
+			ProductOrderService productOrderService) {
 		this.productService = productService;
 		this.orderService = orderService;
-		this.orderProductService = orderProductService;
+		this.productOrderService = productOrderService;
 	}
 
 	
@@ -56,11 +60,11 @@ public class OrderController {
 
 		List<ProductOrder> orderProducts = new ArrayList<>();
 		for (OrderProductDto dto : formDtos) {
-			orderProducts.add(orderProductService.create(
+			orderProducts.add(productOrderService.create(
 					new ProductOrder(order, productService.getProduct(dto.getProduct().getId()), dto.getQuantity())));
 		}
 
-		order.setOrderProducts(orderProducts);
+		order.setProductsOrder(orderProducts);
 		this.orderService.update(order);
 
 		String uri = ServletUriComponentsBuilder.fromCurrentServletMapping().path("/orders/{id}")

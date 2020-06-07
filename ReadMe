@@ -1,0 +1,184 @@
+1. Create User Api ,get All user and user by id API,
+2. Created get all product Api, add product , delete product and update product API
+3. Place order api
+4. Get all order list API created.
+
+---------------------------------
+Register User
+
+Method :- Post
+Url :- http://localhost:8080/api/user/saveUser
+Request :- 
+
+{
+	"fName":"Nishant",
+	"lName":"K",
+	"email":"ni8hant@gmail.com"
+}
+
+Response :-
+
+{
+    "id": 1,
+    "fName": "Nishant",
+    "lName": "K",
+    "email": "ni8hant@gmail.com"
+}
+
+-----------------------------------------
+Get User List API
+
+Method :- Get
+Url :- http://localhost:8080/api/user/getAll
+
+
+Response :-
+[ 
+    {
+        "id": 1,
+        "fName": "Nishant",
+        "lName": "K",
+        "email": "ni8hant@gmail.com"
+    }
+]
+------------------------------------------
+Get User List API by Id
+
+Method :- Get
+Url :- http://localhost:8080/api/user/getAll/{id}
+
+
+Response :-
+{
+    "id": 1,
+    "fName": "Nishant",
+    "lName": "K",
+    "email": "ni8hant@gmail.com"
+}
+
+-------------------------------------
+Get ALL Product
+
+Method :- Get
+Url :- http://localhost:8080/api/products
+
+Response :-
+[
+    {
+        "id": 1,
+        "name": "Data Structures & Algorithms",
+        "price": 373.23,
+        "pictureUrl": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.amazon.in%2FData-Structures-Algorithms-1e-AHO%2Fdp%2F8177588265&psig=AOvVaw3MkxX8TgB2i_p_4sbBeZyN&ust=1591625144818000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCNDCl_Tv7-kCFQAAAAAdAAAAABAD",
+        "status": null
+    },
+    {
+        "id": 2,
+        "name": "Java Schildt",
+        "price": 550.0,
+        "pictureUrl": "https://www.eclipse.org/community/eclipse_newsletter/2018/february/images/starter-wizard-dependencies.png",
+        "status": null
+    },
+    
+]
+----------------------------------------------------
+Add Product
+
+Method :- Post
+Url :- localhost:8080/api/products/addProduct
+Request :-
+
+{
+	"name":"Java Complete Ref",
+	"price":720,
+	"pictureUrl":"https://www.eclipse.org/2018/february/images/starter-wizard-dependencies.png",
+	"status":"Active"
+} 
+
+Response :-
+
+{
+    "id": 3,
+    "name": "Java Complete Ref",
+    "price": 720.0,
+    "pictureUrl": "https://www.eclipse.org/2018/february/images/starter-wizard-dependencies.png",
+    "status": "Active"
+}
+
+
+------------------------------------------------------
+
+Update Product
+
+Method :- Put
+Url :- localhost:8080/api/products/updateProduct/{id}
+Request :- 
+{
+	"name":"Java Schil",
+	"price":688,
+	"pictureUrl":"https://www.eclipse.org/2018/february/images/starter-wizard-dependencies.png",
+	"status":"Inactive"
+}
+
+Response :-
+
+Product updated Successfully
+
+------------------------------------------------
+Delete Product
+
+Method :- Delete
+Url :- localhost:8080/api/products/deleteProduct/{id}
+Response : Product Deleted
+
+
+--------------------------------------------------------------
+
+Created Order 
+
+Method :- Post
+Url :- http://localhost:8080/api/orders
+
+Request :- 
+
+{
+    "Product":[
+    {
+        "id": 2,
+        "name": "Java Schil",
+        "price": 688.0,
+        "pictureUrl": "https://www.eclipse.org/2018/february/images/starter-wizard-dependencies.png",
+        "status": "Inactive"
+    }
+   
+],
+    "quantity": 1,
+    "email": "ni8hant@gmail.com"
+}
+
+Response :- 
+
+Order Created Successfully.
+
+---------------------------------------------------------
+
+Get All orders
+Method :- Get
+Url :- http://localhost:8080/api/orders
+
+
+Response :- 
+
+{
+    "Product":[
+    {
+        "id": 2,
+        "name": "Java Schil",
+        "price": 688.0,
+        "pictureUrl": "https://www.eclipse.org/2018/february/images/starter-wizard-dependencies.png",
+        "status": "Inactive"
+    }
+   
+],
+    "quantity": 1,
+    "email": "ni8hant@gmail.com"
+}

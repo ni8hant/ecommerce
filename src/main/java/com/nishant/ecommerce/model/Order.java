@@ -31,15 +31,17 @@ public class Order {
 
 	private String status;
 
+	private String email;
+
 	@OneToMany(mappedBy = "pk.order")
 	@Valid
-	private List<ProductOrder> orderProducts = new ArrayList<>();
+	private List<ProductOrder> productsOrder = new ArrayList<>();
 
 	@Transient
 	public Double getTotalOrderPrice() {
 		double sum = 0D;
-		List<ProductOrder> orderProducts = getOrderProducts();
-		for (ProductOrder op : orderProducts) {
+		List<ProductOrder> productsOrder = getProductsOrder();
+		for (ProductOrder op : productsOrder) {
 			sum += op.getTotalPrice();
 		}
 
@@ -70,16 +72,26 @@ public class Order {
 		this.status = status;
 	}
 
-	public List<ProductOrder> getOrderProducts() {
-		return orderProducts;
+	
+
+	public List<ProductOrder> getProductsOrder() {
+		return productsOrder;
 	}
 
-	public void setOrderProducts(List<ProductOrder> orderProducts) {
-		this.orderProducts = orderProducts;
+	public void setProductsOrder(List<ProductOrder> productsOrder) {
+		this.productsOrder = productsOrder;
 	}
 
 	@Transient
 	public int getNumberOfProducts() {
-		return this.orderProducts.size();
+		return this.productsOrder.size();
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }

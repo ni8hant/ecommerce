@@ -21,6 +21,8 @@ public class Product {
 	private Double price;
 
 	private String pictureUrl;
+	
+	private String status;
 
 	public Product(Long id, @NotNull(message = "Product name is required.") String name, Double price,
 			String pictureUrl) {
@@ -64,4 +66,14 @@ public class Product {
 	public void setPictureUrl(String pictureUrl) {
 		this.pictureUrl = pictureUrl;
 	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	
+	
 }
