@@ -23,9 +23,12 @@ import com.nishant.ecommerce.model.User;
 import com.nishant.ecommerce.repository.UserRepository;
 import com.nishant.ecommerce.service.IRegistration;
 
+import io.swagger.annotations.Api;
+
 
 
 @Controller
+@Api
 public class RegistrationController {
 
 	@Autowired

@@ -19,8 +19,11 @@ import com.nishant.ecommerce.model.Product;
 import com.nishant.ecommerce.repository.ProductRepository;
 import com.nishant.ecommerce.service.ProductService;
 
+import io.swagger.annotations.Api;
+
 @RestController
 @RequestMapping("/api/products")
+@Api
 public class ProductController {
 
 	private ProductService productService;

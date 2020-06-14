@@ -14,13 +14,18 @@ import org.springframework.web.bind.annotation.RestController;
 import com.nishant.ecommerce.model.User;
 import com.nishant.ecommerce.repository.UserRepository;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping("/api/user")
+@Api(value = "user", description = "Add and fetch user", tags = "user")
 public class RestApiController {
 
 	@Autowired
 	UserRepository repo;
 
+	@ApiOperation(value = "Save User Register User", notes = "Register User Get All User in the sysytem", nickname = "SaveUser")
 	@PostMapping(path = "/saveUser", consumes = { "application/json" })
 	public User SaveUser(@RequestBody User user) {
 
@@ -29,6 +34,7 @@ public class RestApiController {
 
 	}
 
+	@ApiOperation(value = "Get All Users", notes = "Get All User in the sysytem", nickname = "getUsers")
 	@GetMapping("/getAll")
 	public List<User> GetUserList() {
 
@@ -36,6 +42,7 @@ public class RestApiController {
 
 	}
 
+	@ApiOperation(value = "Get user by id", notes = "Get User by Id in the sysytem", nickname = "getUser")
 	@GetMapping("/getAll/{id}")
 	public Optional<User> GetUser(@PathVariable("id") Long id) {
 

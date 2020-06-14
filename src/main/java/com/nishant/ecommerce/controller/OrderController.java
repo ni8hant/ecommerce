@@ -28,8 +28,11 @@ import com.nishant.ecommerce.service.OrderService;
 import com.nishant.ecommerce.service.ProductOrderService;
 import com.nishant.ecommerce.service.ProductService;
 
+import io.swagger.annotations.Api;
+
 @RestController
 @RequestMapping("/api/orders")
+@Api(value="orders",description ="Data Service operations on place an Order",tags="orders")
 public class OrderController {
 
 	ProductService productService;
