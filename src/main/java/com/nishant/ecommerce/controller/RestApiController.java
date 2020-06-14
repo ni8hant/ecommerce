@@ -16,7 +16,11 @@ import com.nishant.ecommerce.repository.UserRepository;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-
+/**
+ * 
+ * @author nishant
+ *
+ */
 @RestController
 @RequestMapping("/api/user")
 @Api(value = "user", description = "Add and fetch user", tags = "user")
